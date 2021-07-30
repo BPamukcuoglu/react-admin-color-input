@@ -4,7 +4,7 @@ import inflection from 'inflection';
 import { addField, FieldTitle } from 'ra-core';
 import TextField from '@material-ui/core/TextField';
 import * as ReactColor from 'react-color';
-import get from 'lodash.get';
+// import get from 'lodash.get';
 import pure from 'recompose/pure';
 
 require('./ColorInput.css');
@@ -15,11 +15,9 @@ const ColorFieldComponent = ({ source, record = {}, className }) =>
       <div style={{
         width: '20px',
         height: '20px',
-        background: get(record, source),
         marginRight: '5px',
       }}
       />
-      <span className={className}>{get(record, source)}</span>
     </div>
   );
 
@@ -46,7 +44,8 @@ class ColorInputComponent extends React.Component {
   handleOpen = () => this.setState({ show: true });
   handleClose = () => this.setState({ show: false });
   handleChange = ({ hex }) => {
-    console.log(hex)
+    hex = hex.toString().toUpperCase();
+    hex = hex.replace("#", "0xff");
     this.props.input.onChange(hex);
     this.forceUpdate();
   };
