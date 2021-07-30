@@ -46,6 +46,7 @@ class ColorInputComponent extends React.Component {
   handleOpen = () => this.setState({ show: true });
   handleClose = () => this.setState({ show: false });
   handleChange = ({ hex }) => {
+    console.log(hex)
     this.props.input.onChange(hex);
     this.forceUpdate();
   };
